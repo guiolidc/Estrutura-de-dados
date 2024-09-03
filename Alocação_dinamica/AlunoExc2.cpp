@@ -26,8 +26,22 @@ class Aluno {
     int matricula;
 };
 
+Aluno* turma(std::string nomes[], int matriculas[], int N) {
+    // Passo 1: Alocar memória para o vetor de objetos Aluno
+    Aluno* t = new Aluno[N];
+
+    // Passo 2: Preencher cada objeto Aluno com os dados fornecidos
+    for (int i = 0; i < N; ++i) {
+        t[i].escreveNome(nomes[i]);
+        t[i].escreveMatricula(matriculas[i]);
+    }
+
+    // Passo 3: Retornar o ponteiro para o vetor alocado
+    return t;
+}
+
 Aluno *turmas_uniao(Aluno t1[], Aluno t2[], int N1, int N2) {
-    Aluno *tu;
+    Aluno *tu = new Aluno[N1+N2];
 
     for(int i = 0; i < N1 ; i++){
         *(tu+i) = *(t1 + i);
@@ -40,39 +54,32 @@ Aluno *turmas_uniao(Aluno t1[], Aluno t2[], int N1, int N2) {
 }
 
 int main() {
-    int N;
-    std::cout << "Digite o número de alunos: ";
-    std::cin >> N;
 
-    // Verifica se o número de alunos é positivo
-    if (N <= 0) {
-        std::cerr << "Número de alunos deve ser positivo." << std::endl;
-        return 1;
-    }
+    int array1[] {1010, 2020, 3030};
+    int array11[] {1010, 2020};
+    std::string arrayS[] {"Fulano", "Beltrano", "Cicrano"};
+    std::string arrayS2[] {"Fulano", "Beltrano"};
+    Aluno* t1 = new Aluno[3];
+    Aluno* t2 = new Aluno[2];
+    Aluno* tu = new Aluno[5];
 
-    // Aloca memória para vetores dinâmicos
-    Aluno* array1 = new Aluno[N];
-    Aluno* array2 = new Aluno[N];
-    Aluno a = new Aluno();
-
-    Aluno b = new Aluno
-    array1[0] = {a, {'Beltrano',2020}};
 
     // Cria o vetor de alunos
-    Aluno* t = turmas_uniao(array1, array2, N, 3);
-
+    t1 = turma(arrayS, array1, 3);
+    t2 = turma(arrayS2, array11, 2);
+    tu = turmas_uniao(t1, t2, 3, 2);
     // Exibe os alunos
     std::cout << "Dados dos alunos:" << std::endl;
-    for (int i = 0; i < N; ++i) {
-        std::cout << "Nome: " << t[i].devolveNome() 
-                  << ", Matrícula: " << t[i].devolveMatricula() 
+    for (int i = 0; i < 5; ++i) {
+        std::cout << "Nome: " << tu[i].devolveNome() 
+                  << ", Matrícula: " << tu[i].devolveMatricula() 
                   << std::endl;
     }
 
     // Libera a memória alocada
-    delete[] t;
-    delete[] arrayNomes;
-    delete[] arrayMatricula;
+    delete[] tu;
+    delete[] t1;
+    delete[] t2;
 
     return 0;
 
