@@ -38,6 +38,15 @@ Aluno* turma(std::string nomes[], int matriculas[], int N) {
     return t;
 }
 
+int *turma_conta(Aluno t[], int N) {
+    int *c = new int[26]{0};
+    for (int i = 0; i < N; i++) {
+        int letra = int(t[i].devolveNome()[0]);
+        c[letra] += 1;
+    }
+    return c;
+}
+
 
 int main() {
     int N;
