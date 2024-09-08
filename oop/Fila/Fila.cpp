@@ -31,8 +31,12 @@ int ClasseFila::adicionarDado(int dado){
 int ClasseFila::retirarDado(){
     if (this->filaVazia()) return(ERROFILAVAZIA);
     else{
+        int dado = dados[0];
+        for (int i = 0; i < fimDaFila; i++){
+            dados[i] = dados[i+1];
+        }
         fimDaFila -= 1;
-        return dados[fimDaFila+1];
+        return dado;
     }
 }
 

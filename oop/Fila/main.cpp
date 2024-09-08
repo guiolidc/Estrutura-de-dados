@@ -15,7 +15,7 @@ int main() {
 
     std::cout << "Retirando da fila: " << fila.retirarDado() << std::endl;
     std::cout << "Retirando da fila: " << fila.retirarDado() << std::endl;
-
+    std::cout << "Adiciona 10 na posição: " << fila.adicionarDado(10) << std::endl;
     std::cout << "Último da fila agora: " << fila.verificaUltimo() << std::endl;
 
     return 0;
