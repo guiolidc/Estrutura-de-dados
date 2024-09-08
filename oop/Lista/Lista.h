@@ -1,6 +1,9 @@
 #ifndef LISTA_H
 #define LISTA_H
 #define MAXLISTA 100
+#define ERROLISTACHEIA -1
+#define ERROLISTAVAZIA -2
+#define ERROPOSICAO -3
 
 class Lista{
 private:
@@ -19,7 +22,7 @@ private:
 public:
     int adiciona(int dado);
     int adicionaNoInicio(int dado);
-    int adicionaNaPosicao(int dado, int posicao);
+    int adicionaNaPosicao(int dado, int destino);
     int adicionaEmOrdem(int dado);
     int retira();
     int retiraDoInicio();
